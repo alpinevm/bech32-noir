@@ -1,0 +1,7 @@
+[package]
+name = "bech32_lib"
+type = "lib"
+authors = ["alpinevm"]
+compiler_version = ">=0.25.0"
+
+[dependencies]

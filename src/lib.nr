@@ -48,16 +48,14 @@ pub fn segwit_decode(address: BoundedVec<u8, 90>) -> WitnessProgram {
     WitnessProgram { version: bech_resp.data.get(0), program: decoded_data }
 }
 
-fn witness_builder<N>(v: u8, witness_array: [u8; N]) -> WitnessProgram {
+pub fn witness_builder<N>(v: u8, witness_array: [u8; N]) -> WitnessProgram {
     let mut witness = WitnessProgram { version: v, program: BoundedVec::new() };
     witness.program.extend_from_array(witness_array);
     witness
 }
 
-global BOUNDED_STR_LENGTH = 90;
-
 // string encoder 
-fn str_to_bvec<N>(string: str<N>) -> BoundedVec<u8, 90> {
+pub fn str_to_bvec<N>(string: str<N>) -> BoundedVec<u8, 90> {
     let mut out: BoundedVec<u8, 90> = BoundedVec::new();
     let string_bytes = string.as_bytes();
     for i in 0..N {
@@ -103,7 +101,9 @@ fn valid_addresses() {
         ),
         witness_builder(
             1,
-            [117, 30, 118, 232, 25, 145, 150, 212, 84, 148, 28, 69, 209, 179, 163, 35, 241, 67, 59, 214, 117, 30, 118, 232, 25, 145, 150, 212, 84, 148, 28, 69, 209, 179, 163, 35, 241, 67, 59, 214]
+            [
+            117, 30, 118, 232, 25, 145, 150, 212, 84, 148, 28, 69, 209, 179, 163, 35, 241, 67, 59, 214, 117, 30, 118, 232, 25, 145, 150, 212, 84, 148, 28, 69, 209, 179, 163, 35, 241, 67, 59, 214
+        ]
         ),
 
         witness_builder(16, [117, 30]),
@@ -113,7 +113,9 @@ fn valid_addresses() {
         ),
         witness_builder(
             1,
-            [0, 0, 0, 196, 165, 202, 212, 98, 33, 178, 161, 135, 144, 94, 82, 102, 54, 43, 153, 213, 233, 28, 108, 226, 77, 22, 93, 171, 147, 232, 100, 51]
+            [
+            0, 0, 0, 196, 165, 202, 212, 98, 33, 178, 161, 135, 144, 94, 82, 102, 54, 43, 153, 213, 233, 28, 108, 226, 77, 22, 93, 171, 147, 232, 100, 51
+        ]
         )
     ];
 

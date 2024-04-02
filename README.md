@@ -6,7 +6,7 @@
 
 <hr>
 
-**Bech32 Noir** provides functions for decoding the locking script (P2WSH, P2WPKH) from bitcoin [segwit](https://en.bitcoin.it/wiki/Segregated_Witness) addresses in Noir Circuits.
+**Bech32 Noir** provides functions for decoding the locking script (P2WSH, P2WPKH) from bitcoin [segwit addresses](https://en.bitcoin.it/wiki/BIP_0173#Bech32) in Noir Circuits.
 
 At the moment, this library only supports decoding.
 <br>
